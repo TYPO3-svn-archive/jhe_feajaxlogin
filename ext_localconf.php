@@ -2,23 +2,26 @@
 if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
+$TYPO3_CONF_VARS['FE']['eID_include']['jhefeajaxlogin'] = 'EXT:jhe_feajaxlogin/pi1/class.tx_jhefeajaxlogin_eID.php';
 
-t3lib_extMgm::addService($_EXTKEY, '',  'tx_jhefeajaxlogin_sv1',
-	array(
-		'title' => 'Authentification',
-		'description' => 'Authenticates against something different from TYPOs database!!!',
+t3lib_extMgm::addService($_EXTKEY, 'auth',  'tx_jhefeajaxlogin_sv1',
+    array(
+        'title' => 'authUser',
+        'description' => '',
 
-		'subtype' => 'authUserFE,getUserFE',
+        'subtype' => '',
 
-		'available' => TRUE,
-		'priority' => 50,
-		'quality' => 50,
+        'available' => TRUE,
+        'priority' => 50,
+        'quality' => 50,
 
-		'os' => '',
-		'exec' => '',
+        'os' => '',
+        'exec' => '',
 
-		'classFile' => t3lib_extMgm::extPath($_EXTKEY).'sv1/class.tx_jhefeajaxlogin_sv1.php',
-		'className' => 'tx_jhefeajaxlogin_sv1',
-	)
+        'classFile' => t3lib_extMgm::extPath($_EXTKEY).'sv1/class.tx_jhefeajaxlogin_sv1.php',
+        'className' => 'tx_jhefeajaxlogin_sv1',
+    )
 );
+
+t3lib_extMgm::addPItoST43($_EXTKEY, 'pi1/class.tx_jhefeajaxlogin_pi1.php', '_pi1', 'list_type', 1);
 ?>
